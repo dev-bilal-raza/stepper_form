@@ -4,11 +4,14 @@ import Image from "next/image";
 import LockIcon from "../../../public/lock_icon-16.png"
 
 // Define the Step02 component that accepts count and setCount props of type CountType
-const Step02 = () => {
+const Step02 = ({ count }: { count: number }) => {
 
     return (
         // Main container to center the content
         <div className="flex flex-col justify-center items-center">
+            <h2 className='font-bold text-2xl text-center font-heading p-8'>
+                Step # {count}
+            </h2>
             <div className="flex flex-col justify-center gap-2 items-center m-4 md:w-2/5 text-center">
                 <h1 className="font-semibold ">
                     Details

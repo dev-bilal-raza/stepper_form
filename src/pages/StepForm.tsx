@@ -37,7 +37,7 @@ const StepFormPage = () => {
   return (
     <div>
       {/* Step loader component to indicate the current step */}
-      <div className='bg-slate-50'>
+      <div className='bg-slate-50 min-h-screen'>
         {/* Navigation section */}
         <section className='w-full flex justify-between items-center font-para font-semibold p-3 pb-6 px-8'>
           {/* Go Back button */}
@@ -56,16 +56,13 @@ const StepFormPage = () => {
         <StepLoader stepCount={stepCount} />
         {/* Form section */}
         <section>
-          <form onSubmit={handleFormSubmit}>
-            <h2 className='font-bold text-2xl text-center font-heading m-4'>
-              Step # {stepCount}
-            </h2>
+          <form onSubmit={handleFormSubmit} className='m-8'>
             {/* Conditional rendering of steps based on the current step count */}
             {
               stepCount === 1 ?
                 <FirstStep count={stepCount} setCount={setStepCount} /> :
                 stepCount === 2 ?
-                  <SecondStep /> :
+                  <SecondStep count={stepCount} /> :
                   <FinalStep />
             }
           </form>

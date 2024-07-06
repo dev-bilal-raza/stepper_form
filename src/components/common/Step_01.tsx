@@ -11,6 +11,9 @@ const Step01 = ({ count, setCount }: CountType) => {
     }
     return (
         <div className="flex flex-col justify-center items-center">
+            <h2 className='font-bold text-2xl text-center font-heading p-8'>
+                Step # {count}
+            </h2>
             <div className="w-full">
                 <h2 className="md:text-3xl text-xl font-heading font-bold text-center">
                     What is your monthly digital marketing budget?
@@ -18,7 +21,7 @@ const Step01 = ({ count, setCount }: CountType) => {
                 <div className="w-full flex flex-col justify-center items-center">
                     {
                         budget_data.map((item) => (
-                            <div key={item.data_id} onClick={() => handleFirstForm(item.data)} className="p-5 m-3 bg-white w-full sm:w-3/12 hover:bg-black hover:text-white duration-500 hover:cursor-pointer" >
+                            <div key={item.data_id} onClick={() => handleFirstForm(item.data)} className="p-5 m-3 bg-white w-full sm:w-3/12 hover:bg-black hover:text-white duration-500 hover:cursor-pointer border-zinc-200 rounded-md border" >
                                 <p className="text-center">
                                     {item.data}
                                 </p>
