@@ -5,7 +5,6 @@ import FirstStep from "@/components/common/Step_01";
 import SecondStep from "@/components/common/Step_02";
 import StepLoader from '@/components/common/StepLoader';
 import FinalStep from '@/components/common/FinalStep';
-import { store_user_details_to_ls } from '@/services/ls_service';
 import Link from 'next/link';
 
 const StepFormPage = () => {
@@ -26,15 +25,12 @@ const StepFormPage = () => {
     const user_phone = formData.get("user_phone");
 
     // Check if all fields are valid
-    if (user_name && user_email && user_password && user_phone) {
-      console.log(user_name);
-      // Store user details in local storage
-      store_user_details_to_ls({
-        user_name: String(user_name),
-        user_email: String(user_email),
-        user_password: String(user_password),
-        user_phone: String(user_phone)
-      });
+    if (user_name && user_email && user_phone) {
+      console.log("User Name: " + user_name);
+      console.log("User Email: " + user_email);
+      console.log("User Password: " + user_password);
+      console.log("User Phone: " + user_phone);
+
       // Move to the next step
       setStepCount(stepCount + 1);
     }
@@ -43,23 +39,23 @@ const StepFormPage = () => {
   return (
     <div>
       {/* Step loader component to indicate the current step */}
-      <StepLoader stepCount={stepCount} />
-      <div className='bg-slate-50 p-6 h-screen'>
+      <div className='bg-slate-50'>
         {/* Navigation section */}
-        <section className='w-full flex justify-between font-para font-semibold'>
+        <section className='w-full flex justify-between items-center font-para font-semibold p-3 pb-6 px-8'>
           {/* Go Back button */}
           <button
             onClick={() => setStepCount(stepCount - 1)}
-            className='disabled:text-slate-400 disabled:cursor-not-allowed hover:cursor-pointer'
+            className='disabled:text-slate-400 disabled:cursor-not-allowed hover:cursor-pointer font-medium'
             disabled={stepCount === 1}
           >
-            ↞ Go Back
+            <span className='text-xl font-extrabold'>←&nbsp;</span> Go Back
           </button>
           {/* Exit link */}
           <Link href={"/"}>
-            Exit&nbsp;✕
+            Exit&nbsp; ✕
           </Link>
         </section>
+        <StepLoader stepCount={stepCount} />
         {/* Form section */}
         <section>
           <form onSubmit={handleFormSubmit}>
@@ -71,7 +67,7 @@ const StepFormPage = () => {
               stepCount === 1 ?
                 <FirstStep count={stepCount} setCount={setStepCount} /> :
                 stepCount === 2 ?
-                  <SecondStep count={stepCount} setCount={setStepCount} /> :
+                  <SecondStep /> :
                   <FinalStep />
             }
           </form>

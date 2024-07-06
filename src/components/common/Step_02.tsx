@@ -1,136 +1,102 @@
-"use client"
 // Importing necessary modules and components
-import { CountType } from "@/types/count.module";
 import Button from "./Button";
-import { delete_user_details_to_ls } from "@/services/ls_service";
-import { useRouter } from "next/navigation";
+import Image from "next/image";
+import LockIcon from "../../../public/lock_icon-16.png"
 
 // Define the Step02 component that accepts count and setCount props of type CountType
-const Step02 = ({ count, setCount }: CountType) => {
-    const router = useRouter(); // Initialize Next.js router for navigation
-    let is_submitted = localStorage.getItem("is_submitted") || null;// Check if user details are already submitted
+const Step02 = () => {
 
     return (
         // Main container to center the content
-        <div className="flex justify-center items-center">
-            {
-                is_submitted ? (
-                    // If details are already submitted, show the success message and action buttons
-                    <div className="m-5">
-                        <h2 className="md:text-3xl text-xl font-heading font-bold">
-                            Your details have been successfully submitted.
-                        </h2>
-                        <div className="w-full flex justify-between p-5">
-                            {/* Button to delete user details and refresh the page */}
-                            <Button bt_type="button" clickFunc={() => {
-                                delete_user_details_to_ls();
-                                router.refresh();
-                            }} delete_for={true}>
-                                Delete Details
-                            </Button>
-                            {/* Button to proceed to the next step */}
-                            <Button bt_type="button" delete_for={false} clickFunc={() => setCount(count + 1)}>
-                                Next Step
-                            </Button>
-                        </div>
+        <div className="flex flex-col justify-center items-center">
+            <div className="flex flex-col justify-center gap-2 items-center m-4 md:w-2/5 text-center">
+                <h1 className="font-semibold ">
+                    Details
+                </h1>
+                <p className="text-gray-600 leading-relaxed">We&apos;re thrilled at the opportunity to help you grow your business online. Please let us know the best way to reach you.</p>
+            </div>
+            <div className="w-full md:w-2/5 m-7 p-5">
+                {/* Form field for user name */}
+                <div className="w-full mb-5">
+                    <label
+                        htmlFor="user_name"
+                        className="font-semibold text-sm"
+                    >
+                        Name
+                    </label>
+                    <input
+                        type="text"
+                        name="user_name"
+                        id="user_name"
+                        className="p-3 w-full text-sm text-gray-900 rounded-sm border border-zinc-200"
+                        placeholder=""
+                        required
+                    />
+                </div>
+
+                <div className="w-full mb-5 flex sm:flex-row flex-col gap-4">
+                    {/* Form field for user email */}
+                    <div>
+                        <label
+                            htmlFor="user_email"
+                            className="font-semibold text-sm"
+                        >
+                            Email
+                        </label>
+                        <input
+                            type="email"
+                            name="user_email"
+                            id="user_email"
+                            className="p-3 w-full text-sm text-gray-900 rounded-sm border border-zinc-200"
+                            placeholder=""
+                            required
+                        />
                     </div>
-                ) : (
-                    // If details are not submitted, show the form to enter user details
-                    <div className="w-2/5">
-                        {/* Form field for user name */}
-                        <div className="relative z-0 w-full mb-5 group">
-                            <input
-                                type="text"
-                                name="user_name"
-                                id="user_name"
-                                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                placeholder=""
-                                required
-                            />
-                            <label
-                                htmlFor="user_name"
-                                className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                            >
-                                Your name
-                            </label>
-                        </div>
-
-                        {/* Form field for user email */}
-                        <div className="relative z-0 w-full mb-5 group">
-                            <input
-                                type="email"
-                                name="user_email"
-                                id="user_email"
-                                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                placeholder=""
-                                required
-                            />
-                            <label
-                                htmlFor="user_email"
-                                className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                            >
-                                Email address
-                            </label>
-                        </div>
-
-                        {/* Form field for user password */}
-                        <div className="relative z-0 w-full mb-5 group">
-                            <input
-                                type="password"
-                                name="user_password"
-                                id="user_password"
-                                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                placeholder=" "
-                                required
-                            />
-                            <label
-                                htmlFor="user_password"
-                                className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                            >
-                                Password
-                            </label>
-                        </div>
-
-                        {/* Form field for user phone */}
-                        <div className="relative z-0 w-full mb-5 group">
-                            <input
-                                type="tel"
-                                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                                name="user_phone"
-                                id="user_phone"
-                                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                placeholder=" "
-                                required
-                            />
-                            <label
-                                htmlFor="user_phone"
-                                className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                            >
-                                Phone number (904-326-3050)
-                            </label>
-                        </div>
-
-                        {/* Text area for additional user input */}
-                        <div className="relative z-0 w-full mb-5 group">
-                            <label htmlFor="message" className="block mb-2 text-sm text-gray-500">
-                                Anything else you&apos;d like to share?
-                            </label>
-                            <textarea
-                                id="message"
-                                rows={4}
-                                className="block p-2.5 w-full text-sm text-gray-900 bg-transparent border-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600"
-                            />
-                        </div>
-
-                        {/* Submit button for the form */}
-                        <div className="flex justify-center items-center">
-                            <Button bt_type="submit" delete_for={false}>
-                                Send Request
-                            </Button>
-                        </div>
+                    {/* Form field for user phone */}
+                    <div>
+                        <label
+                            htmlFor="user_phone"
+                            className="font-semibold text-sm"
+                        >
+                            Phone number
+                        </label>
+                        <input
+                            type="tel"
+                            pattern="[0-9]{3}-[0-9]{4}-[0-9]{3}"
+                            name="user_phone"
+                            id="user_phone"
+                            className="p-3 w-full text-sm text-gray-900 rounded-sm border border-zinc-200"
+                            placeholder=" "
+                            required
+                        />
                     </div>
-                )
-            }
+                </div>
+
+                {/* Text area for additional user input */}
+                <div className="w-full mb-5">
+                    <label htmlFor="message" className="font-semibold text-sm">
+                        Anything else you&apos;d like to share?
+                    </label>
+                    <textarea
+                        id="message"
+                        rows={4}
+                        className="p-2.5 w-full text-sm text-gray-900 border-2 rounded-sm border-zinc-200 appearance-none focus:outline-none focus:ring-0 focus:border-black"
+                    />
+                </div>
+
+                {/* Submit button for the form */}
+                <div className="flex justify-center items-center m-4 mb-7">
+                    <Button bt_type="submit" delete_for={false}>
+                        Send Request
+                    </Button>
+                </div>
+                <div className="flex md:flex-row flex-col gap-3 md:items-start items-center justify-center">
+                    <Image src={LockIcon} alt="Lock" />
+                    <p className="text-gray-600 text-center">
+                        We promise never to share your information or spam your inbox
+                    </p>
+                </div>
+            </div>
         </div>
     );
 }

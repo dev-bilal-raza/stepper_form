@@ -7,7 +7,7 @@ const StepLoader = ({ stepCount }: { stepCount: number }) => {
         <div className='w-full bg-gray-300'>
             {/* Inner div that represents the loader bar with dynamic width based on stepCount */}
             <div 
-                className={`h-2 duration-500 bg-blue-600 ${stepCount === 1 ? "w-2/5" : stepCount === 2 ? "w-9/12" : "w-full"}`} 
+                className={`h-2 duration-500 bg-green-600 ${stepCount === 1 ? "w-2/5" : stepCount === 2 ? "w-9/12" : "w-full"}`} 
             />
         </div>
     );

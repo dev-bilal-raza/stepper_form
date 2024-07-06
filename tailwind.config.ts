@@ -8,11 +8,6 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        link: ["Lato"],
-        heading: ["Alegreya"],
-        para:["Merriweather"]
-      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
