@@ -14,11 +14,11 @@ const HomePage = () => {
           Stepper Form Task For Front-end!
         </h1>
         {/* Button component with a link to the step-form page */}
-        <Button bt_type='button' delete_for={false}>
-          <Link href={"/step-form"}>
+        <Link href={"/step-form"} className='w-full flex justify-center'>
+          <Button bt_type='button' delete_for={false}>
             Go To Task
-          </Link>
-        </Button>
+          </Button>
+        </Link>
       </div>
     </div>
   );
