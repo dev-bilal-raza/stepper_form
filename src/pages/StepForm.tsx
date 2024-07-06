@@ -9,7 +9,7 @@ import Link from 'next/link';
 
 const StepFormPage = () => {
   const [stepCount, setStepCount] = useState(1); // State to keep track of the current step
-  console.log(stepCount);
+  // console.log(stepCount);
 
   // Handler for form submission
   const handleFormSubmit = (event: FormEvent) => {
@@ -21,14 +21,12 @@ const StepFormPage = () => {
     // Get element values from form data
     const user_name = formData.get("user_name");
     const user_email = formData.get("user_email");
-    const user_password = formData.get("user_password");
     const user_phone = formData.get("user_phone");
 
     // Check if all fields are valid
     if (user_name && user_email && user_phone) {
       console.log("User Name: " + user_name);
       console.log("User Email: " + user_email);
-      console.log("User Password: " + user_password);
       console.log("User Phone: " + user_phone);
 
       // Move to the next step

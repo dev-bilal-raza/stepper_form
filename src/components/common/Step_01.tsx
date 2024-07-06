@@ -4,7 +4,7 @@ import { budget_data } from "@/data/budget_data"
 
 const Step01 = ({ count, setCount }: CountType) => {
     const handleFirstForm = (user_budget: string) => {
-        if (count === 1) {
+        if (count === 1 && user_budget) {
             console.log(`You have selected ${user_budget} budget.`);
             setCount(count + 1);
         }
