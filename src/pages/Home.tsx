@@ -5,6 +5,8 @@ import Button from '@/components/common/Button';
 
 // Defining the HomePage component
 const HomePage = () => {
+  console.log("This is the Home Page");
+  
   return (
     // Main container with full-screen height and gradient background, centered content
     <div className='h-screen bg-gradient-to-br from-black via-slate-900 to-slate-800 flex justify-center items-center'>
